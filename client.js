@@ -32,8 +32,35 @@ function updateStreak() {
 }
 
 function newProblem() {
-  const a = randomInt(1, 5);
-  const b = randomInt(1, 5);
+let a = randomInt(1, 10);
+let b = randomInt(1, 10);
+
+  if (document.getElementById('difficultySelect').value == "easy")
+  {
+a = randomInt(1, 10);
+b = randomInt(1, 10);
+  }
+  else if (document.getElementById('difficultySelect').value == "medium")
+  {
+a = randomInt(1, 50);
+b = randomInt(1, 50);
+  }
+    else if (document.getElementById('difficultySelect').value == "hard")
+  {
+a = randomInt(1, 100);
+b = randomInt(1, 100);
+  }
+      else if (document.getElementById('difficultySelect').value== "hard++")
+  {
+a = randomInt(1, 500);
+b = randomInt(1, 500);
+  }
+      else if (document.getElementById('difficultySelect').value == "HARDER")
+  {
+a = randomInt(1, 1000);
+b = randomInt(1, 1000);
+  }
+
 
   operandAEl.textContent = a;
   operandBEl.textContent = b;

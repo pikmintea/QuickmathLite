@@ -34,39 +34,54 @@ function updateStreak() {
 function newProblem() {
 let a = randomInt(1, 10);
 let b = randomInt(1, 10);
+const difficultySelectvalue = document.getElementById('difficultySelect').value ;
+  const typeofmath = document.getElementById('typeSelect').value;
 
-  if (document.getElementById('difficultySelect').value == "easy")
+  if (difficultySelectvalue == "easy")
   {
 a = randomInt(1, 10);
 b = randomInt(1, 10);
   }
-  else if (document.getElementById('difficultySelect').value == "medium")
+  else if (difficultySelectvalue == "medium")
   {
 a = randomInt(1, 50);
 b = randomInt(1, 50);
   }
-    else if (document.getElementById('difficultySelect').value == "hard")
+    else if (difficultySelectvalue == "hard")
   {
 a = randomInt(1, 100);
 b = randomInt(1, 100);
   }
-      else if (document.getElementById('difficultySelect').value== "hard++")
+      else if (difficultySelectvalue == "hard++")
   {
 a = randomInt(1, 500);
 b = randomInt(1, 500);
   }
-      else if (document.getElementById('difficultySelect').value == "HARDER")
+      else if (difficultySelectvalue == "HARDER")
   {
 a = randomInt(1, 1000);
 b = randomInt(1, 1000);
   }
 
 
+if (typeofmath === 'addition') {
+  operatorEl.textContent = '+';
+  currentAnswer = a + b;
+} else if (typeofmath === 'subtraction') {
+  operatorEl.textContent = '−';
+  currentAnswer = a - b;
+} else if (typeofmath === 'multiplication') {
+  operatorEl.textContent = '×';
+  currentAnswer = a * b;
+} else if (typeofmath === 'division') {
+  operatorEl.textContent = '÷';
+  currentAnswer = Math.floor(a / b);
+}
+
   operandAEl.textContent = a;
   operandBEl.textContent = b;
-  operatorEl.textContent = '+';
 
-  currentAnswer = a + b;
+
 
   answerInput.value = '';
   answerInput.classList.remove('correct', 'wrong');

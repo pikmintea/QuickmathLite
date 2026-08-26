@@ -3,9 +3,12 @@ const operandBEl = document.getElementById('operandB');
 const operatorEl = document.getElementById('operator');
 const answerInput = document.getElementById('answerInput');
 const streakText = document.getElementById('StreakText');
+const TotalDoneText = document.getElementById('TotalDoneText');
 
 let currentAnswer = 0;
 let streak = 0;
+let TotalDone = 0;
+
 let isChecking = false;
 
 function randomInt(min, max) {
@@ -13,7 +16,19 @@ function randomInt(min, max) {
 }
 
 function updateStreak() {
+
   streakText.textContent = `Streak = ${streak}`;
+
+  if (streak == 0)
+  {
+  streakText.textContent = ``;
+  }
+
+  if (TotalDone != 0)
+  {
+  TotalDoneText.textContent = `Total Done = ${TotalDone}`;
+  }
+
 }
 
 function newProblem() {
@@ -49,7 +64,8 @@ function handleInput() {
 
   if (isCorrect) {
     streak++;
-  } else {
+    TotalDone++;
+  } else if (isCorrect == false){
     streak = 0;
   }
 

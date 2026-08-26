@@ -37,39 +37,53 @@ let b = randomInt(1, 10);
 const difficultySelectvalue = document.getElementById('difficultySelect').value ;
   const typeofmath = document.getElementById('typeSelect').value;
 
-  if (difficultySelectvalue == "easy")
+  if (difficultySelectvalue == "easy++")
   {
 a = randomInt(1, 10);
 b = randomInt(1, 10);
   }
-  else if (difficultySelectvalue == "medium")
+    if (difficultySelectvalue == "easy")
   {
 a = randomInt(1, 50);
 b = randomInt(1, 50);
   }
+  else if (difficultySelectvalue == "medium")
+  {
+a = randomInt(10, 100);
+b = randomInt(10, 100);
+  }
     else if (difficultySelectvalue == "hard")
   {
-a = randomInt(1, 100);
-b = randomInt(1, 100);
+a = randomInt(50, 500);
+b = randomInt(50, 500);
   }
       else if (difficultySelectvalue == "hard++")
   {
-a = randomInt(1, 500);
-b = randomInt(1, 500);
+a = randomInt(100, 1000);
+b = randomInt(100, 1000);
   }
       else if (difficultySelectvalue == "HARDER")
   {
-a = randomInt(1, 1000);
-b = randomInt(1, 1000);
+a = randomInt(1000, 10000);
+b = randomInt(1000, 10000);
   }
 
 
 if (typeofmath === 'addition') {
   operatorEl.textContent = '+';
   currentAnswer = a + b;
+
+
 } else if (typeofmath === 'subtraction') {
   operatorEl.textContent = '−';
-  currentAnswer = a - b;
+  const larger = Math.max(a, b);
+  const smaller = Math.min(a, b);
+  currentAnswer = larger - smaller;
+  operandAEl.textContent = larger;
+  operandBEl.textContent = smaller;
+
+
+
 } else if (typeofmath === 'multiplication') {
   operatorEl.textContent = '×';
   currentAnswer = a * b;
@@ -115,6 +129,11 @@ function handleInput() {
 
   setTimeout(newProblem, isCorrect ? 400 : 900);
 }
+function ReRollOnClick()
+{
+ newProblem();
+ return;
+}
 
 answerInput.addEventListener('input', handleInput);
 
@@ -123,3 +142,14 @@ document.addEventListener('click', () => {
 });
 
 newProblem();
+
+const difficultySelect = document.getElementById('difficultySelect');
+const typeSelect = document.getElementById('typeSelect');
+
+difficultySelect.addEventListener('change', () => {
+  newProblem();
+});
+
+typeSelect.addEventListener('change', () => {
+  newProblem();
+});

@@ -1,12 +1,58 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <title>QuickMath Lite</title>
-  </head>
-  <body>
-    <header> <h1>QuickMath Lite</h1></header>
-    <main></main>
-    <footer> <p></p></footer>
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickMath Lite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1 class="logo">QuickMath Lite | PROTOTYPE </h1>
+  
+
+  <div class="selectors">
+    <select id="typeSelect" aria-label="Exercise type">
+      <option value="addition">Addition</option>
+      <option value="subtraction">Subtraction</option>
+      <option value="multiplication">Multiplication</option>
+      <option value="division">Division</option>
+    </select>
+    <select id="difficultySelect" aria-label="Difficulty">
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+  </div>
+
+
+<div class="TextAtTheLeftTopDiv">
+
+<p id="Streak">Streak = 0   </p>
+</div>
+
+
+  <main class="app">
+    <div class="problem" id="problem">
+      <span id="operandA">0</span>
+      <span id="operator">+</span>
+      <span id="operandB">0</span>
+      <span class="equals">=</span>
+      <input
+        type="text"
+        id="answerInput"
+        class="answer-input"
+        inputmode="numeric"
+        autocomplete="off"
+        autofocus
+        aria-label="Your answer"
+      >
+    </div>
+  </main>
+
+  <script src="client.js"></script>
+</body>
 </html>

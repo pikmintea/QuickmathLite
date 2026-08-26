@@ -117,3 +117,29 @@ body {
   color: var(--violet);
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;     
+}   
+.BottomRigtDiv {
+
+  position: fixed;
+
+  bottom: 10px;
+
+  right: 10px;
+
+}
+
+.BottomRigtDiv button {
+background: none;
+box-shadow: none;
+border: none;
+margin: 0;
+box-sizing: 0;
+}
+

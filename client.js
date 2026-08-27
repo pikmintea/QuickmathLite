@@ -154,3 +154,20 @@ typeSelect.addEventListener('change', () => {
   newProblem();
 });
 
+
+var formSubmitting = false;
+var setFormSubmitting = function() { formSubmitting = true; };
+
+window.onload = function() {
+    window.addEventListener("beforeunload", function (e) {
+        if (formSubmitting) {
+            return undefined;
+        }
+
+        var confirmationMessage = 'its looks like you have been playing the game. '
+                                + 'If you leave before saving, your statistics will be lost.';
+        
+        (e || window.event).returnValue = confirmationMessage; 
+        return confirmationMessage; 
+    });
+};

@@ -184,7 +184,6 @@ if (typeofmath === 'multiplication') typeMultiplier = 2;
 else if (typeofmath === 'division') typeMultiplier = 4;
 
 XP += Math.floor(baseXP * typeMultiplier);
-  XP += baseXP;
   
   updateStreak();
 }

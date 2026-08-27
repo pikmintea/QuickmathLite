@@ -8,6 +8,7 @@ const TotalDoneText = document.getElementById('TotalDoneText');
 let currentAnswer = 0;
 let streak = 0;
 let TotalDone = 0;
+let XP = 0;
 
 let isChecking = false;
 
@@ -17,7 +18,7 @@ function randomInt(min, max) {
 
 function updateStreak() {
 
-  streakText.textContent = `Streak = ${streak}`;
+  streakText.textContent = `${streak} Streak`;
 
   if (streak == 0)
   {
@@ -26,7 +27,12 @@ function updateStreak() {
 
   if (TotalDone != 0)
   {
-  TotalDoneText.textContent = `Total Done = ${TotalDone}`;
+  TotalDoneText.textContent = `${TotalDone} Total Done`;
+  }
+
+  if (XP != 0)
+  {
+  document.getElementById('XPText').textContent = `${XP} XP`;
   }
 
 }
@@ -72,28 +78,31 @@ b = randomInt(1000, 10000);
 if (typeofmath === 'addition') {
   operatorEl.textContent = '+';
   currentAnswer = a + b;
-
+  operandAEl.textContent = a;     
+  operandBEl.textContent = b;      
 
 } else if (typeofmath === 'subtraction') {
   operatorEl.textContent = '−';
   const larger = Math.max(a, b);
   const smaller = Math.min(a, b);
   currentAnswer = larger - smaller;
-  operandAEl.textContent = larger;
-  operandBEl.textContent = smaller;
-
-
+  operandAEl.textContent = larger;  
+  operandBEl.textContent = smaller; 
 
 } else if (typeofmath === 'multiplication') {
   operatorEl.textContent = '×';
   currentAnswer = a * b;
+  operandAEl.textContent = a;      
+  operandBEl.textContent = b;      
+
 } else if (typeofmath === 'division') {
   operatorEl.textContent = '÷';
   currentAnswer = Math.floor(a / b);
+  operandAEl.textContent = a;     
+  operandBEl.textContent = b;      
 }
 
-  operandAEl.textContent = a;
-  operandBEl.textContent = b;
+
 
 
 
@@ -121,6 +130,7 @@ function handleInput() {
   if (isCorrect) {
     streak++;
     TotalDone++;
+    GiveXP();
   } else if (isCorrect == false){
     streak = 0;
   }
@@ -154,6 +164,30 @@ typeSelect.addEventListener('change', () => {
   newProblem();
 });
 
+function GiveXP() {
+
+  const difficulty = document.getElementById('difficultySelect').value;
+  
+  let baseXP = 10;
+  let typeMultiplier = 1;
+
+  if (difficulty === 'easy++') baseXP = 10;
+  else if (difficulty === 'easy') baseXP = 15;
+  else if (difficulty === 'medium') baseXP = 25;
+  else if (difficulty === 'hard') baseXP = 40;
+  else if (difficulty === 'hard++') baseXP = 60;
+  else if (difficulty === 'HARDER') baseXP = 100;
+  const typeofmath = document.getElementById('typeSelect').value;
+
+
+if (typeofmath === 'multiplication') typeMultiplier = 2;
+else if (typeofmath === 'division') typeMultiplier = 4;
+
+XP += Math.floor(baseXP * typeMultiplier);
+  XP += baseXP;
+  
+  updateStreak();
+}
 
 var formSubmitting = false;
 var setFormSubmitting = function() { formSubmitting = true; };

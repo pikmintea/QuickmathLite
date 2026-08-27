@@ -153,3 +153,4 @@ difficultySelect.addEventListener('change', () => {
 typeSelect.addEventListener('change', () => {
   newProblem();
 });
+

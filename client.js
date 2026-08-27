@@ -127,7 +127,7 @@ function handleInput() {
 
   updateStreak();
 
-  setTimeout(newProblem, isCorrect ? 400 : 900);
+  setTimeout(newProblem, isCorrect ? 200 : 800);
 }
 function ReRollOnClick()
 {
